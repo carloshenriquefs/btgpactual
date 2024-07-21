@@ -1,10 +1,12 @@
 package tech.buildrun.btgpactual.orderms.factory;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import tech.buildrun.btgpactual.orderms.entitiy.OrderEntity;
 import tech.buildrun.btgpactual.orderms.entitiy.OrderItem;
 
-import java.util.List;
 import java.math.BigDecimal;
+import java.util.List;
 
 public class OrderEntityFactory {
 
@@ -18,5 +20,9 @@ public class OrderEntityFactory {
         entity.setItems(List.of(items));
 
         return entity;
+    }
+
+    public static Page<OrderEntity> buildWithPage() {
+        return new PageImpl<>(List.of(build()));
     }
 }
